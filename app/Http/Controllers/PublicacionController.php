@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Publicacion;
-use App\Models\Miembro;
+use App\Models\Usuario;
 use App\Models\Categoria;
 
 
@@ -19,7 +19,7 @@ class PublicacionController extends Controller
 
 public function create()
 {
-    $usuarios = Miembro::all();
+    $usuarios = Usuario::all();
     $categorias = Categoria::all();
     return view('publicaciones.create', compact('usuarios', 'categorias'));
 }
@@ -32,7 +32,7 @@ public function store(Request $request)
 
 public function edit(Publicacion $publicacion)
 {
-    $usuarios = Miembro::all();
+    $usuarios = Usuario::all();
     $categorias = Categoria::all();
     return view('publicaciones.edit', compact('publicacion', 'usuarios', 'categorias'));
 }

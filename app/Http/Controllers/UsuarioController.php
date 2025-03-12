@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Miembro;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 
-class MiembroController extends Controller
+class UsuarioController extends Controller
 {
     public function index()
     {
-        $usuarios = Miembro::all();
+        $usuarios = Usuario::all();
         return view('usuarios.index', compact('usuarios'));
     }
 
@@ -27,7 +27,7 @@ class MiembroController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        $usuario = new Miembro();
+        $usuario = new Usuario();
         $usuario->nombre = $request->nombre;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
@@ -36,16 +36,16 @@ class MiembroController extends Controller
         return redirect()->route('usuarios.index');
     }
 
-    public function edit(Miembro $usuario)
+    public function edit(Usuario $usuario)
     {
         return view('usuarios.edit', compact('usuario'));
     }
 
-    public function update(Request $request, Miembro $usuario)
+    public function update(Request $request, Usuario $usuario)
     {
         $request->validate([
             'nombre' => 'required|max:255',
-            'email' => 'required|email|unique:miembros,email,' . $usuario->id,
+            'email' => 'required|email|unique:usuarios,email,' . $usuario->id,
             'password' => 'nullable|min:8',
         ]);
 
@@ -59,7 +59,7 @@ class MiembroController extends Controller
         return redirect()->route('usuarios.index');
     }
 
-    public function destroy(Miembro $usuario)
+    public function destroy(Usuario $usuario)
     {
         $usuario->delete();
         return redirect()->route('usuarios.index');
