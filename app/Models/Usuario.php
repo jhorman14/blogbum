@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Miembro extends Authenticatable
+
+class Usuario extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,6 +19,8 @@ class Miembro extends Authenticatable
         'password',
         'perfil',
         'rol_id',
+        'estado',
+        'foto_perfil',
     ];
 
     protected $hidden = [
@@ -43,4 +47,12 @@ class Miembro extends Authenticatable
     {
         return $this->belongsTo(Rol::class);
     }
+
+    public function getFotoPerfilUrlAttribute()
+{
+    if ($this->foto_perfil) {
+        return Storage::url($this->foto_perfil);
+    }
+    return null;
+}
 }

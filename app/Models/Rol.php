@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
 {
+    protected $table = 'roles';
     public function usuario()
 {
     return $this->hasMany(Rol::class);

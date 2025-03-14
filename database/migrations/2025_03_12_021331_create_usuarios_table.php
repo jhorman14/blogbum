@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('email');
             $table->string('password');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable()->default('');
             $table->unsignedBigInteger('rol_id');
             $table->timestamps();
 

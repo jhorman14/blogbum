@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->enum('nombre', ['admin', 'usuario']);
-            $table->timestamps();
+        Schema::table('usuarios', function (Blueprint $table) {
+            $table->boolean('estado')->default(true); // true = activo, false = inactivo
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::table('usuarios', function (Blueprint $table) {
+            $table->dropColumn('estado');
+        });
     }
 };

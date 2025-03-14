@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comentario;
-use App\Models\Miembro;
+use App\Models\Usuario;
 use App\Models\Publicacion;
 
 class ComentarioController extends Controller
@@ -17,7 +17,7 @@ class ComentarioController extends Controller
 
     public function create()
     {
-        $usuarios = Miembro::all();
+        $usuarios = Usuario::all();
         $publicaciones = Publicacion::all();
         return view('comentarios.create', compact('usuarios', 'publicaciones'));
     }
@@ -37,7 +37,7 @@ class ComentarioController extends Controller
 
     public function edit(Comentario $comentario)
     {
-        $usuarios = Miembro::all();
+        $usuarios = Usuario::all();
         $publicaciones = Publicacion::all();
         return view('comentarios.edit', compact('comentario', 'usuarios', 'publicaciones'));
     }
