@@ -19,8 +19,8 @@
     <input type="file" name="foto_perfil">
     <button type="submit">Subir Foto de Perfil</button>
 </form>
-@if ($usuario->foto_perfil)
-    <img src="{{ Storage::url($usuario->foto_perfil) }}" alt="Foto de Perfil">
+@if ($usuario->foto_perfil_url)
+    <img src="{{ $usuario->foto_perfil_url }}" alt="Foto de Perfil">
 @else
     <p>No hay foto de perfil.</p>
 @endif
