@@ -22,5 +22,4 @@ Route::put('/perfil/descripcion', [UsuarioController::class, 'actualizarDescripc
 Route::post('/perfil/foto', [UsuarioController::class, 'actualizarFotoPerfil'])->name('perfil.actualizar_foto');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name(name: 'login.submit');
-
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
